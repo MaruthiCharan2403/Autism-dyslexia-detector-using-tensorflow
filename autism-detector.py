@@ -9,9 +9,9 @@ from flask import request
 from flask import render_template
 #from tensorflow.keras.models import load_model
 from random import randint
+UPLOAD = "C:/Users/yssmc/OneDrive/Documents/GitHub/Autism-dyslexia-detector-using-tensorflow/UPLOAD"
 
 app = Flask(__name__)
-UPLOAD_FOLDER = "static/"
 
 #model = load_model("autism-model.h5")
 
@@ -35,7 +35,7 @@ def upload_predict():
     if request.method == "POST":
         image_file = request.files["image"]
         if image_file:
-            image_location = os.path.join(UPLOAD_FOLDER, image_file.filename)
+            image_location = os.path.join(UPLOAD, image_file.filename)
             image_file.save(image_location)
             if 'non' in str(image_file.filename):
                 value = 'Non-Autistic'
